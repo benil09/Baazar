@@ -4,8 +4,8 @@ import Products from "../models/product.model.js";
 
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Products.find({});
-    res.json({ products });
+    const product = await Products.find({});
+    res.json({ product });
   } catch (error) {
     console.log("Error in getAllProducts controller ", error);
     res

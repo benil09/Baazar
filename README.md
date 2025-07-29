@@ -32,7 +32,7 @@ Baazar is a modern and responsive e-commerce web application designed to offer s
 ### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/baazar.git
+git clone https://github.com/benil09/Baazar.git
 cd baazar
 ```
 

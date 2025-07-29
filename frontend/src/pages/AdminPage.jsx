@@ -4,10 +4,20 @@ import { tabs } from "../constants/tabs";
 import CreatePage from "./dashboard/CreatePage";
 import ProductsPage from "./dashboard/ProductsPage";
 import AnalyticsPage from "./dashboard/AnalyticsPage";
+import { useProductStore } from "../store/useProductStore";
+import { useEffect } from "react";
 
 const AdminPage = () => {
  
   const [activeTab, setActiveTab] = useState("create");
+  const {getAllProducts,product} = useProductStore()
+  useEffect(()=>{
+    getAllProducts()
+  },[getAllProducts])
+
+  console.log("Products",product)
+
+
   return (
     <div className="min-h-screen mt-16 bg-gray-100 p-4">
       <header className="rounded-md p-4 flex justify-center items-center">
