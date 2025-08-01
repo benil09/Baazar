@@ -1,5 +1,6 @@
 import React from 'react'
 import { useUserStore } from '../store/useUserStore'
+import { Camera } from "lucide-react";
 
 const Profile = () => {
   // Sample user data (replace with real data via props or context)
@@ -14,6 +15,18 @@ const Profile = () => {
             alt="Profile"
             className="w-24 h-24 rounded-full object-cover border-2 border-indigo-500"
           />
+          <div className="relative mt-2">
+            <label htmlFor="profileUpload" className="cursor-pointer absolute left-3 bottom-1 bg-indigo-500 text-white rounded-full p-2 hover:bg-indigo-600 transition-colors duration-300">
+              <Camera className="w-5 h-5  text-white-600 " />
+            </label>
+            <input
+              type="file"
+              id="profileUpload"
+              className="hidden"
+              accept="image/*"
+              onChange={(e) => console.log("Selected file:", e.target.files[0])}
+            />
+          </div>
           <h2 className="text-xl font-semibold mt-4">{user.name}</h2>
           <p className="text-gray-600">{user.email}</p>
           <p className="text-gray-500 text-sm mt-1">Joined on {new Date(user.createdAt).toDateString()}</p>

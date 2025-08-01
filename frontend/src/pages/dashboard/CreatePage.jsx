@@ -6,11 +6,14 @@ import { useProductStore } from "../../store/useProductStore";
 const categories = [
   "jeans",
   "t-shirts",
-  "shoes",
-  "glasses",
+  "shirts",
+  "accessories",
   "jackets",
-  "suits",
-  "bags",
+  "sweaters",
+  "sarees",
+  "hoodies",
+  "footwear",
+  "trousers",
 ];
 const CreatePage = () => {
   const [newProduct, setNewProduct] = useState({

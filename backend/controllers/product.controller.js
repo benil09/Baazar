@@ -41,18 +41,23 @@ export const getFeaturedProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   try {
-    
-
     const { name, description, category, price, image } = req.body;
     
+    if (!name || !description || !category || !price) {
+      return res.status(400).json({ message: "Missing required product fields" });
+    }
 
     let cloudinaryResponse = null;
     
-
     if (image) {
-      cloudinaryResponse = await cloudinary.uploader.upload(image, {
-        folder: "products",
-      });
+      try {
+        cloudinaryResponse = await cloudinary.uploader.upload(image, {
+          folder: "products",
+        });
+      } catch (uploadError) {
+        console.error("Cloudinary upload failed:", uploadError.message);
+        return res.status(400).json({ message: "Image upload failed", error: uploadError.message });
+      }
     }
    
 
@@ -76,7 +81,7 @@ export const createProduct = async (req, res) => {
   }
 };
 
-export const deleteProduct = async () => {
+export const deleteProduct = async (req,res) => {
   try {
     const product = await Products.findById(req.params.id);
 
@@ -124,18 +129,18 @@ export const getRecommendedProducts = async () => {
   }
 };
 
-export const getProductsByCategory = async () => {
+export const getProductsByCategory = async (req,res) => {
   const { category } = req.params;
   try {
     const products = await Products.find({ category });
-    res.json(products);
+    res.json({products});
   } catch (error) {
     console.log("Error in getProductsByCategory controller", error.message);
     res.status(500).json({ message: "Server Error", error: error.message });
   }
 };
 
-export const toggleFeaturedProduct = async () => {
+export const toggleFeaturedProduct = async (req,res) => {
   try {
     const product = await Products.findById(req.params.id);
     if (product) {

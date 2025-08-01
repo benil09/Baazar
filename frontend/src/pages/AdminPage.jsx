@@ -10,12 +10,11 @@ import { useEffect } from "react";
 const AdminPage = () => {
  
   const [activeTab, setActiveTab] = useState("create");
-  const {getAllProducts,product} = useProductStore()
+  const {getAllProducts} = useProductStore()
   useEffect(()=>{
     getAllProducts()
   },[getAllProducts])
 
-  console.log("Products",product)
 
 
   return (
