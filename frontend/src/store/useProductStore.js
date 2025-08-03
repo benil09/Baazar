@@ -41,7 +41,6 @@ export const useProductStore = create((set) => ({
     set({ loading: true });
     try {
       const res = await axios.get(`/product/category/${category}`);
-      console.log("API response:", res.data);
 
       set({ product: res.data.products, loading: false });
     } catch (error) {

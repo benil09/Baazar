@@ -1,8 +1,19 @@
 import { motion } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router";
+import {useUserStore} from "../store/useUserStore"
 const ProductCard = ({ product }) => {
+  const {user} = useUserStore();
+  const handleAddToCart = ()=>{
+    if(!user){
+      toast.error("Please login to add to cart");
+    }else{
+      // call a function to add product to cart 
+      toast.success("handle cart called")
+    }
+  }
+
+
   return (
    
 
@@ -22,7 +33,7 @@ const ProductCard = ({ product }) => {
             ₹{product.price}
           </span>
           <button
-            onClick={() => toast.success("Added to cart")}
+            onClick={handleAddToCart}
             className="p-2 cursor-pointer rounded-full hover:bg-pink-100 transition duration-200"
           >
             <ShoppingCart className="w-5 h-5 text-pink-700" />

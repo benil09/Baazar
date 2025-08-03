@@ -6,6 +6,7 @@ import AdminPage from "../pages/AdminPage"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const cartItem = 0
 
   const { user, logout } = useUserStore();
   const isAdmin = user?.role === 'admin';
@@ -28,7 +29,13 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex items-center space-x-4">
             <Link to="/cart" className="text-gray-700 hover:text-blue-600">
-              <ShoppingCart />
+              <div className="relative">
+                <ShoppingCart />
+                {cartItem!=0? <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItem}
+                </span> :" " }
+                
+              </div>
             </Link>
             <Link to="/favourite" className="text-gray-700 hover:text-blue-600 ">
               <Heart  />
