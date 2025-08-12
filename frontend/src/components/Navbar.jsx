@@ -2,11 +2,14 @@ import { CircleUser, Heart, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../store/useUserStore";
-import AdminPage from "../pages/AdminPage"
+import {useCartStore} from "../store/useCartStore"
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const cartItem = 0
+  
+  const {cart} = useCartStore()
+
 
   const { user, logout } = useUserStore();
   const isAdmin = user?.role === 'admin';
@@ -31,9 +34,9 @@ const Navbar = () => {
             <Link to="/cart" className="text-gray-700 hover:text-blue-600">
               <div className="relative">
                 <ShoppingCart />
-                {cartItem!=0? <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {cartItem}
-                </span> :" " }
+                {cart.length>0 &&  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center transition duration-300 ease-in-out">
+                {cart.length}
+                </span>}
                 
               </div>
             </Link>
