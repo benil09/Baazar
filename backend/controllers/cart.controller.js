@@ -5,11 +5,11 @@ export const addToCart = async (req, res) => {
     const { productId } = req.body;
     const user = req.user;
 
-    const existingItem = user.cartItems.find((item) => item.id === productId);
+    const existingItem = user.cartItems.find((item) => item.productId.toString() === productId);
     if (existingItem) {
       existingItem.quantity += 1;
     } else {
-      user.cartItems.push(productId);
+      user.cartItems.push({productId, quantity: 1 });
     }
 
     await user.save();
