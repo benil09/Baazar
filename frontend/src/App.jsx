@@ -10,14 +10,20 @@ import HomePage from "./pages/HomePage"; // Your actual logged-in home page
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import SignupPage from "./pages/SignupPage";
+import { useCartStore } from "./store/useCartStore";
 import { useUserStore } from "./store/useUserStore";
 
 function App() {
   const { user, checkAuth, checkingAuth } = useUserStore();
+  const { getCartItems } = useCartStore();
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  useEffect(() => {
+    getCartItems()
+  },[getCartItems]);
 
   if (checkingAuth)
     return (

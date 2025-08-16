@@ -38,7 +38,7 @@ const userSchema = new Schema(
         quantity: {
           type: Number,
           default: 1,
-          min: [1, "Quantity must be at least 1"],
+          min: 0,
         },
       },
     ],

@@ -31,112 +31,81 @@ const Navbar = () => {
             />
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/cart" className="text-gray-700 hover:text-blue-600">
-              <div className="relative">
-                <ShoppingCart />
-                {cart.length>0 &&  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center transition duration-300 ease-in-out">
-                {cart.length}
-                </span>}
-                
-              </div>
-            </Link>
-            <Link to="/favourite" className="text-gray-700 hover:text-blue-600 ">
-              <Heart  />
-            </Link>
-            <Link to="/user" className="text-gray-700 hover:text-blue-600">
-              <CircleUser />
-            </Link>
             {user ? (
-              <Link
-                onClick={logout}
-                to="/login"
-                className="text-gray-700 hover:text-blue-600 border-none px-6 py-2 bg-blue-200 rounded-md"
-              >
-                Logout
-              </Link>
-            ) : (
-              <div className="flex">
+              <>
+                <Link to="/cart" className="text-gray-700 hover:text-blue-600">
+                  <div className="relative">
+                    <ShoppingCart />
+                    {cart.length>0 &&  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center transition duration-300 ease-in-out">
+                    {cart.length}
+                    </span>}
+                    
+                  </div>
+                </Link>
+                <Link to="/favourite" className="text-gray-700 hover:text-blue-600 ">
+                  <Heart  />
+                </Link>
+                <Link to="/user" className="text-gray-700 hover:text-blue-600">
+                  <CircleUser />
+                </Link>
                 <Link
+                  onClick={logout}
                   to="/login"
                   className="text-gray-700 hover:text-blue-600 border-none px-6 py-2 bg-blue-200 rounded-md"
                 >
-                  Login
+                  Logout
                 </Link>
-                <Link
-                  to="/signup"
-                  className="mx-2 text-gray-700 hover:text-blue-600 border-none px-6 py-2 bg-blue-200 rounded-md"
-                >
-                  Signup
-                </Link>
-              </div>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="text-gray-700 hover:text-blue-600 border-none px-6 py-2 bg-blue-200 rounded-md"
+              >
+                Login
+              </Link>
             )}
-            {isAdmin?( <Link to={"/secret-dashboard"} className="text-gray-700 hover:text-blue-600 border-none px-6 py-2 bg-blue-200 rounded-md" >dashboard</Link> ) :(" ") }
+            {isAdmin && (
+              <Link
+                to="/secret-dashboard"
+                className="text-gray-700 hover:text-blue-600 border-none px-6 py-2 bg-blue-200 rounded-md"
+              >
+                Dashboard
+              </Link>
+            )}
           </div>
           <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-blue-600 focus:outline-none"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+            
+            {user ? (
+              <div className="flex space-x-4 ml-4">
+                <Link to="/cart" className="text-gray-700 hover:text-blue-600">
+                  <div className="relative">
+                    <ShoppingCart />
+                    {cart.length > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center transition duration-300 ease-in-out">
+                        {cart.length}
+                      </span>
+                    )}
+                  </div>
+                </Link>
+                <Link to="/favourite" className="text-gray-700 hover:text-blue-600">
+                  <Heart />
+                </Link>
+                <Link to="/user" className="text-gray-700 hover:text-blue-600">
+                  <CircleUser />
+                </Link>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="text-gray-700 hover:text-blue-600 border-none px-4 py-2 bg-blue-200 rounded-md ml-4"
               >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </div>
-      {isOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to="/" className="block text-gray-700 hover:text-blue-600">
-              Home
-            </Link>
-            <Link
-              to="/shop"
-              className="block text-gray-700 hover:text-blue-600"
-            >
-              Shop
-            </Link>
-            <Link
-              to="/about"
-              className="block text-gray-700 hover:text-blue-600"
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className="block text-gray-700 hover:text-blue-600"
-            >
-              Contact
-            </Link>
-            <Link
-              to="/cart"
-              className="block text-gray-700 hover:text-blue-600"
-            >
-              Cart
-            </Link>
-          </div>
-        </div>
-      )}
+     
     </nav>
   );
 };
