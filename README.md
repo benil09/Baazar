@@ -67,7 +67,11 @@ Baazar.com/
 
 ## 📷 Screenshots
 
-*(Add screenshots here showcasing UI, dashboard, mobile responsiveness)*
+![Homepage](./frontend/src/assets/readmephotos/img1.png)
+![Admin Dashboard](./frontend/src/assets/readmephotos/img2.png)
+![Product Manage](./frontend/src/assets/readmephotos/img3.png)
+![cart page](./frontend/src/assets/readmephotos/img4.png)
+    
 
 ## ✨ Future Enhancements
 
@@ -78,10 +82,10 @@ Baazar.com/
 
 ## 🧑‍💻 Author
 
-- Nilkamal Priyadarshi  
-- [LinkedIn](https://www.linkedin.com/in/nilkamal-priyadarshi)  
-- [Instagram - Earworm](https://www.instagram.com/earworm)  
-- Email: nilkamalpriyadarshi@gmail.com
+- Nilkamal Priydarshi  
+- [LinkedIn](https://www.linkedin.com/in/nil-kamal-93945a294/)  
+- [Instagram - Nil🍂](https://www.instagram.com/_hola_its.nil_/)  
+- Email: nilkamal0624@gmail.com
 
 ## 📜 License
 
